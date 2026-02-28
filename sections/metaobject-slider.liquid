@@ -1,19 +1,64 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
-<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js" defer></script>
+{{ 'metaobject-slider.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+{% assign product__base--selected = section.settings.product__main--id %}
+{% assign slider__items--list = product__base--selected.metafields.custom.related_products_with_banner.value %}
+
+<div class="metaobject__slider--section">
+  {% if slider__items--list != blank %}
+    <div class="swiper metaobject__swiper--container">
+      
+      <div class="swiper-wrapper">
+        
+        {% for item in slider__items--list %}
+          {% assign banner__image--file = item.image.value %}
+          {% assign product__handle--ref = item.product.value.handle %}
+          {% assign product__attached--data = all_products[product__handle--ref] %}
+
+          {% if product__attached--data != blank %}
+            
+            <div class="swiper-slide">
+              <div class="slide__content--wrapper">
+                
+                {% if banner__image--file != blank %}
+                  <img src="{{ banner__image--file | image_url: width: 800 }}" alt="{{ product__attached--data.title }}" class="slide__image--banner">
+                {% endif %}
+                
+                <div class="slide__info--overlay">
+                  <h3 class="info__title--text">{{ product__attached--data.title }}</h3>
+                  <a href="{{ product__attached--data.url }}" class="info__button--link">Ver Produto</a>
+                </div>
+
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        
+      </div>
+      
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+<script src="{{ 'metaobject-slider.js' | asset_url }}"></script>  
 
 {% schema %}
 {
-  "name": "Slider de Metaobjetos",
+  "name": "Metaobject Slider",
   "settings": [
     {
       "type": "product",
-      "id": "product__id",
-      "label": "Selecione um produto"
+      "id": "product__main--id",
+      "label": "Selecione o Produto"
     }
   ],
   "presets": [
     {
-      "name": "Slider de Metaobjetos"
+      "name": "Metaobject Slider"
     }
   ]
 }
