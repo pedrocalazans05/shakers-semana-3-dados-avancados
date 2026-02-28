@@ -31,7 +31,7 @@ No Editor de Temas, selecione a seção "Metaobject Slider" e escolha o produto 
 <br>
 
 - Meu Pull Request: [Pull Request](https://github.com/pedrocalazans05/shakers-semana-3-dados-avancados/pull/2)
-- Vídeo de Demonstração: [Video]()
+- Vídeo de Demonstração: [Video](https://drive.google.com/drive/folders/1u6EzZYSezXBNVLZzNQvMR13zM0SUGA8U?usp=drive_link)
 
 <br>
 Made by Pedro Calazans 🤠
