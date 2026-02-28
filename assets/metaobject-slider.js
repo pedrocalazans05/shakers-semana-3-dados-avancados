@@ -11,7 +11,7 @@ function swiperStart() {
       loop: true,
       slidesPerView: 1,
       spaceBetween: 0,
-      
+
       observer: true,
       observeParents: true,
 
@@ -28,5 +28,5 @@ function swiperStart() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', iniciarSwiper);
-document.addEventListener('shopify:section:load', iniciarSwiper);
+document.addEventListener('DOMContentLoaded', swiperStart);
+document.addEventListener('shopify:section:load', swiperStart);
